@@ -1,4 +1,4 @@
-package nyc.c4q.wesniemarcelin.nikoandroidclone;
+package nyc.c4q.wesniemarcelin.nikoandroidclone.RenameMe;
 
 import android.app.Application;
 

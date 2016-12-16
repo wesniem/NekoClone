@@ -1,27 +1,35 @@
 package nyc.c4q.wesniemarcelin.nikoandroidclone;
 
-import android.accessibilityservice.AccessibilityService;
 import android.app.AlarmManager;
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
+import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
-import java.util.Calendar;
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
 
+import nl.qbusict.cupboard.QueryResultIterable;
+import nyc.c4q.wesniemarcelin.nikoandroidclone.RecyclerviewStuff.CatAdapter;
 import nyc.c4q.wesniemarcelin.nikoandroidclone.model.Cat;
 
 import static nl.qbusict.cupboard.CupboardFactory.cupboard;
 
 public class MainActivity extends AppCompatActivity {
+
+    private RecyclerView rv;
+    private CatAdapter adapter;
+    private SQLiteDatabase sqLiteDatabase;
+    private String TAG = "DEBUGGER TOOL";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +39,41 @@ public class MainActivity extends AppCompatActivity {
         showPendingIntentNotification();
         scheduleAlarm();
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        sqLiteDatabase = CatDatabaseHelper.getInstance(this)
+                                          .getWritableDatabase();
+
+        adapter = new CatAdapter(getCatsInCollection());
+        rv = (RecyclerView) findViewById(R.id.recyclerView_id);
+        rv.setLayoutManager(new GridLayoutManager(this, 3));
+        rv.setAdapter(adapter);
+
+
+    }
+
+
+    private List<Cat> getCatsInCollection() {
+        List<Cat> catList = new ArrayList<>();
+
+        try{
+            QueryResultIterable<Cat> iterableQueryList = cupboard()
+                                                        .withDatabase(sqLiteDatabase)
+                                                        .query(Cat.class).query();
+            for(Cat cat : iterableQueryList){
+                catList.add(cat);
+            }
+            iterableQueryList.close();
+        }catch (Exception e){
+            Log.e(TAG, "getCatsInCollection: ", e);
+        }
+        return catList;
+    }
+
+
     public void showSimpleNotification() {
         int NOTIFICATION_ID = 555;
 
