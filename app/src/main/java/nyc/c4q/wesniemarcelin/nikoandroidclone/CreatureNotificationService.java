@@ -45,6 +45,9 @@ public class CreatureNotificationService extends IntentService {
         // get an instance of the DatabaseHelper
         CatDatabaseHelper dbHelper = CatDatabaseHelper.getInstance(this);
         db = dbHelper.getWritableDatabase();
+        db.execSQL("DELETE FROM tablename"); //delete all rows in a table
+        db.close();
+
     }
 
     @Override

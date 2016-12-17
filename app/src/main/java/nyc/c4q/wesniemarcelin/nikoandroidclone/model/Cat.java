@@ -1,39 +1,35 @@
 package nyc.c4q.wesniemarcelin.nikoandroidclone.model;
 
-import java.util.Calendar;
-
-import nl.qbusict.cupboard.annotation.Column;
-
 /**
  * Created by wesniemarcelin on 12/4/16.
  */
 
 public class Cat {
-    // a POJO for cupboard must always contain a variable of type Long called _id.
+    // a POJO for cupboard must always contain a variable of type Long called id.
     // this will serve as the index for the POJO within the SQLite table and will
     // auto-increment.
-    private Long _id;
+    private Long id;
 
     private String name;
 
     // column name defaults to field name
     // or we can use @Column annotation to specify a custom name
-    @Column("last_fed")
-    private Long lastFed;
+//    @Column("last_fed")
+//    private Long lastFed;
 
     // required zero argument constructor
     public Cat() {
         this.name = "Unknown";
-        this.lastFed = Calendar.getInstance().getTimeInMillis();
+//        this.lastFed = Calendar.getInstance().getTimeInMillis();
     }
 
     public Cat(String name, Long lastFed) {
         this.name = name;
-        this.lastFed = lastFed;
+//        this.lastFed = lastFed;
     }
 
     public Long getId() {
-        return _id;
+        return id;
     }
 
     public String getName() {
@@ -44,11 +40,11 @@ public class Cat {
         this.name = name;
     }
 
-    public Long getLastFed() {
-        return lastFed;
-    }
+//    public Long getLastFed() {
+//        return lastFed;
+//    }
 
-    public void set_id(Long _id) {
-        this._id = _id;
+    public void setId(Long id) {
+        this.id = id;
     }
 }
