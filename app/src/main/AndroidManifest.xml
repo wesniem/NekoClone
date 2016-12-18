@@ -24,20 +24,20 @@
         </activity>
 
         <service
-            android:name=".CreatureNotificationService"
+            android:name=".NotificationStuff.CreatureNotificationService"
             android:exported="false" />
 
-        <receiver android:name=".BootBroadcastReceiver">
+        <receiver android:name=".NotificationStuff.BootBroadcastReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
         <receiver
-            android:name=".CreatureAlarmReceiver"
+            android:name=".NotificationStuff.CreatureAlarmReceiver"
             android:process=":remote" >
         </receiver>
 
-        <activity android:name=".ServiceLauncherActivity"></activity>
+        <activity android:name=".NotificationStuff.ServiceLauncherActivity"></activity>
     </application>
 
 </manifest>
