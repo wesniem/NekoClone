@@ -16,6 +16,8 @@ public class Cat {
 
     private String name;
 
+    private String catUrl;
+
     // column name defaults to field name
     // or we can use @Column annotation to specify a custom name
     @Column("last_fed")
@@ -27,9 +29,14 @@ public class Cat {
         this.lastFed = Calendar.getInstance().getTimeInMillis();
     }
 
-    public Cat(String name, Long lastFed) {
+    public Cat(String name, Long lastFed, String catUrl) {
         this.name = name;
         this.lastFed = lastFed;
+        this.catUrl = catUrl;
+    }
+
+    public String getCatUrl() {
+        return catUrl;
     }
 
     public Long getId() {

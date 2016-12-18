@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nl.qbusict.cupboard.QueryResultIterable;
+import nyc.c4q.wesniemarcelin.nikoandroidclone.NotificationStuff.CreatureAlarmReceiver;
 import nyc.c4q.wesniemarcelin.nikoandroidclone.RecyclerviewStuff.CatAdapter;
 import nyc.c4q.wesniemarcelin.nikoandroidclone.model.Cat;
 
@@ -63,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
             QueryResultIterable<Cat> iterableQueryList = cupboard()
                                                         .withDatabase(sqLiteDatabase)
                                                         .query(Cat.class).query();
+
             for(Cat cat : iterableQueryList){
                 catList.add(cat);
             }

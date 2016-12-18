@@ -1,4 +1,4 @@
-package nyc.c4q.wesniemarcelin.nikoandroidclone;
+package nyc.c4q.wesniemarcelin.nikoandroidclone.NotificationStuff;
 
 import android.accessibilityservice.AccessibilityService;
 import android.app.IntentService;
@@ -13,6 +13,8 @@ import android.support.v4.app.NotificationCompat;
 import java.util.Calendar;
 import java.util.Random;
 
+import nyc.c4q.wesniemarcelin.nikoandroidclone.CatDatabaseHelper;
+import nyc.c4q.wesniemarcelin.nikoandroidclone.R;
 import nyc.c4q.wesniemarcelin.nikoandroidclone.model.Cat;
 
 import static nl.qbusict.cupboard.CupboardFactory.cupboard;
@@ -53,7 +55,10 @@ public class CreatureNotificationService extends IntentService {
 //        int NOTIFICATION_ID = 555;
         Random random = new Random();
 
-        Cat newCat = new Cat("Cat" + (random.nextInt(8) + 1), Calendar.getInstance().getTimeInMillis());
+        String s = String.valueOf(random.nextInt(400) + 101);
+        String tempCatString = "https://placekitten.com/g/" +  s + "/" + s;
+
+        Cat newCat = new Cat("Cat " + (random.nextInt(8) + 1), Calendar.getInstance().getTimeInMillis(), tempCatString);
 
         int NOTIFICATION_ID = 555;
 
