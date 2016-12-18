@@ -9,9 +9,9 @@
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
+        android:name=".RenameMe.ApplicationHelper"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:name=".RenameMe.ApplicationHelper"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -34,10 +34,10 @@
         </receiver>
         <receiver
             android:name=".NotificationStuff.CreatureAlarmReceiver"
-            android:process=":remote" >
-        </receiver>
+            android:process=":remote"></receiver>
 
-        <activity android:name=".NotificationStuff.ServiceLauncherActivity"></activity>
+        <activity android:name=".NotificationStuff.ServiceLauncherActivity" />
+        <activity android:name=".UpdateCatNameActivity"></activity>
     </application>
 
 </manifest>

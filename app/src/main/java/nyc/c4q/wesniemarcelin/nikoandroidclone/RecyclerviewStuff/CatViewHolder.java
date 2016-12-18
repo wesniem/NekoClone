@@ -1,8 +1,7 @@
 package nyc.c4q.wesniemarcelin.nikoandroidclone.RecyclerviewStuff;
 
-import android.app.Activity;
-import android.app.FragmentManager;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -12,10 +11,11 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
-import nyc.c4q.wesniemarcelin.nikoandroidclone.CatEditorFragment;
 import nyc.c4q.wesniemarcelin.nikoandroidclone.R;
 import nyc.c4q.wesniemarcelin.nikoandroidclone.RenameMe.ApplicationContextProvider;
+import nyc.c4q.wesniemarcelin.nikoandroidclone.UpdateCatNameActivity;
 import nyc.c4q.wesniemarcelin.nikoandroidclone.model.Cat;
+
 /**
  * Created by shawnspeaks on 12/4/16.
  */
@@ -76,12 +76,13 @@ public class CatViewHolder extends RecyclerView.ViewHolder implements Listener {
          * FRAGMENT LOGIC HERE
          *
          */
+
         Toast.makeText(context, cat.getName(), Toast.LENGTH_SHORT).show();
-        Activity activity = (Activity) context;
-        FragmentManager fm = activity.getFragmentManager();
-        fm.beginTransaction().add(R.id.activity_main, new CatEditorFragment()).commit();
-
+//        Activity activity = (Activity) context;
+//        FragmentManager fm = activity.getFragmentManager();
+//        fm.beginTransaction().add(R.id.activity_main, new CatEditorFragment()).commit();
+        Intent intent = new Intent(context, UpdateCatNameActivity.class);
+        intent.putExtra("catKey", cat);
+        context.startActivity(intent);
     }
-
-
 }

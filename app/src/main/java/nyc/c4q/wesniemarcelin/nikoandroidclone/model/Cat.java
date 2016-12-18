@@ -1,5 +1,6 @@
 package nyc.c4q.wesniemarcelin.nikoandroidclone.model;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import nl.qbusict.cupboard.annotation.Column;
@@ -8,7 +9,7 @@ import nl.qbusict.cupboard.annotation.Column;
  * Created by wesniemarcelin on 12/4/16.
  */
 
-public class Cat {
+public class Cat implements Serializable {
     // a POJO for cupboard must always contain a variable of type Long called _id.
     // this will serve as the index for the POJO within the SQLite table and will
     // auto-increment.
